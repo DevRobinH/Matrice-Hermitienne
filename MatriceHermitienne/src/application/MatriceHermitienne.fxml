@@ -27,7 +27,7 @@
             </Label>
             <ImageView fitHeight="42.0" fitWidth="164.0" layoutX="631.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Desktop/projet%20analyse%20num/3iL.png" />
+                  <Image url="@3iLcomplet.png" />
                </image>
             </ImageView>
             <Label layoutX="265.0" layoutY="63.0" text="  | Valeurs propres" textFill="#347397">
