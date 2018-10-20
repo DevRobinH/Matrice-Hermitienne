@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -36,48 +34,34 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <RadioButton layoutX="152.0" layoutY="189.0" mnemonicParsing="false" selected="true" text="2x2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="choixMatrice" />
-               </toggleGroup>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <RadioButton layoutX="232.0" layoutY="189.0" mnemonicParsing="false" text="3x3" toggleGroup="$choixMatrice">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
             <Label layoutX="161.0" layoutY="153.0" style="-fx-background-color: #F4F4F4;" text="Choix Matrice" textFill="#347397">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="123.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField disable="true" layoutX="254.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField layoutX="188.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField layoutX="123.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField disable="true" layoutX="254.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField layoutX="188.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField disable="true" layoutX="254.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField disable="true" layoutX="188.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
-            <TextField disable="true" layoutX="123.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
-            <QuadCurve controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="120.0" layoutY="358.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
-            <QuadCurve controlX="9.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="334.0" layoutY="357.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
-            <Label layoutX="62.0" layoutY="255.0" text="A =">
+            <TextField fx:id="champMatrice1_1" layoutX="445.0" layoutY="168.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice2_3" disable="true" layoutX="576.0" layoutY="208.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice2_2" layoutX="510.0" layoutY="208.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice2_1" layoutX="445.0" layoutY="208.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice1_3" disable="true" layoutX="576.0" layoutY="168.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice1_2" layoutX="510.0" layoutY="168.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice3_3" disable="true" layoutX="576.0" layoutY="248.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice3_2" disable="true" layoutX="510.0" layoutY="248.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField fx:id="champMatrice3_1" disable="true" layoutX="445.0" layoutY="248.0" prefHeight="30.0" prefWidth="57.0" />
+            <QuadCurve controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="442.0" layoutY="282.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve controlX="10.0" controlY="-65.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="656.0" layoutY="281.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <Label layoutX="384.0" layoutY="179.0" text="A =">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <ButtonBar layoutX="407.0" layoutY="267.0" prefHeight="40.0" prefWidth="103.0" />
-            <Button layoutX="358.0" layoutY="255.0" mnemonicParsing="false" text="Valider" />
+            <Button layoutX="152.0" layoutY="248.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Calculer" />
+            <RadioButton fx:id="choix2x2" layoutX="131.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionChoixMatrice" selected="true" text="2x2">
+               <toggleGroup>
+                  <ToggleGroup fx:id="choixMatrice" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="choix3x3" layoutX="209.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionChoixMatrice" text="3x3" toggleGroup="$choixMatrice" />
          </children>
       </Pane>
    </top>
