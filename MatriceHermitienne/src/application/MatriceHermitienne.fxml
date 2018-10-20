@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +19,7 @@
    <top>
       <Pane prefHeight="900.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="64.0" layoutX="72.0" layoutY="164.0" stroke="#b7bcbd" strokeType="INSIDE" width="202.0" />
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="64.0" layoutX="116.0" layoutY="163.0" stroke="#b7bcbd" strokeType="INSIDE" width="203.0" />
             <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="43.0" layoutX="22.0" layoutY="54.0" stroke="#63d2ee" strokeType="INSIDE" width="807.0" />
             <Label layoutX="56.0" layoutY="61.0" prefHeight="30.0" prefWidth="456.0" text="Matrices Hermitiennes" textFill="#347397">
                <font>
@@ -32,7 +36,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <RadioButton layoutX="105.0" layoutY="190.0" mnemonicParsing="false" text="2x2">
+            <RadioButton layoutX="152.0" layoutY="189.0" mnemonicParsing="false" selected="true" text="2x2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -43,7 +47,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton layoutX="181.0" layoutY="190.0" mnemonicParsing="false" text="3x3" toggleGroup="$choixMatrice">
+            <RadioButton layoutX="232.0" layoutY="189.0" mnemonicParsing="false" text="3x3" toggleGroup="$choixMatrice">
                <font>
                   <Font size="15.0" />
                </font>
@@ -51,11 +55,29 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Label layoutX="110.0" layoutY="154.0" style="-fx-background-color: #F4F4F4;" text="Choix Matrice" textFill="#347397">
+            <Label layoutX="161.0" layoutY="153.0" style="-fx-background-color: #F4F4F4;" text="Choix Matrice" textFill="#347397">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <TextField layoutX="123.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField disable="true" layoutX="254.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField layoutX="188.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField layoutX="123.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField disable="true" layoutX="254.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField layoutX="188.0" layoutY="244.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField disable="true" layoutX="254.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField disable="true" layoutX="188.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
+            <TextField disable="true" layoutX="123.0" layoutY="324.0" prefHeight="30.0" prefWidth="57.0" />
+            <QuadCurve controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="120.0" layoutY="358.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve controlX="9.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="334.0" layoutY="357.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <Label layoutX="62.0" layoutY="255.0" text="A =">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <ButtonBar layoutX="407.0" layoutY="267.0" prefHeight="40.0" prefWidth="103.0" />
+            <Button layoutX="358.0" layoutY="255.0" mnemonicParsing="false" text="Valider" />
          </children>
       </Pane>
    </top>
