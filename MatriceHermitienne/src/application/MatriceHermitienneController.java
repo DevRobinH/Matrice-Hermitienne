@@ -122,7 +122,7 @@ public class MatriceHermitienneController {
 			Matrice matrice2x2 = new Matrice(2, lstValeurs);
 			
 			// La matrice est-elle symétrique ?
-			matSymetrique = matrice2x2.estSymetrique(matrice2x2.GetMatrice());
+			matSymetrique = matrice2x2.estSymetrique(matrice2x2.getMatrice());
 			
 			if (matSymetrique)
 				lbMatSymetrique.setText("La matrice 2x2 est symétrique");
@@ -147,7 +147,7 @@ public class MatriceHermitienneController {
 			Matrice matrice3x3 = new Matrice(3, lstValeurs);
 			
 			// La matrice est-elle symétrique ?
-			matSymetrique = matrice3x3.estSymetrique(matrice3x3.GetMatrice());	
+			matSymetrique = matrice3x3.estSymetrique(matrice3x3.getMatrice());	
 			
 			if (matSymetrique)
 				lbMatSymetrique.setText("La matrice 3x3 est symétrique");

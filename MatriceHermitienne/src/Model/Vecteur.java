@@ -19,7 +19,7 @@ public class Vecteur {
 	public Vecteur(double[] x) {
 		super();
 		this.x = x;
-		this.norme = 0;
+		this.norme = this.calculNorme();
 	}
 	
 	/**

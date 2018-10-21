@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Vecteur;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -79,23 +80,51 @@ public class Matrice {
 
 	}
 	
+	public Vecteur mutiplication(Vecteur x) {
+		double[] valeur = {0,0,0};
+		
+		// si matrice et vecteur taille 2
+		if(this.taille == 2 && x.getX().length == 2) {
+			valeur[0] = this.matrice[0][0]* x.getX()[0]
+					  + this.matrice[0][1]* x.getX()[1];
+			
+			valeur[1] = this.matrice[1][0]* x.getX()[0]
+					  + this.matrice[1][1]* x.getX()[1];
+		// matrice taille 3
+		} else if(this.taille == 2 && x.getX().length == 2) {
+			valeur[0] = this.matrice[0][0]* x.getX()[0]
+					  + this.matrice[0][1]* x.getX()[1]
+					  + this.matrice[0][2]* x.getX()[2];
+			
+			valeur[1] = this.matrice[1][0]* x.getX()[0]
+					  + this.matrice[1][1]* x.getX()[1]
+					  + this.matrice[1][2]* x.getX()[2];
+			
+			valeur[1] = this.matrice[2][0]* x.getX()[0]
+					  + this.matrice[2][1]* x.getX()[1]
+					  + this.matrice[2][2]* x.getX()[2];
+		}
+		
+		return new Vecteur(valeur);
+	}
+	
 	/***************** GET ************************/
 	
-	public long[][]GetMatrice(){
+	public long[][]getMatrice(){
 		return matrice;
 	}
 	
-	public int GetTaille(){
+	public int getTaille(){
 		return taille;
 	}
 	
 	/***************** SET ************************/
 	
-	public void SetMatrice(long[][] matrice){
+	public void setMatrice(long[][] matrice){
 		this.matrice = matrice;
 	}
 	
-	public void SetTaille(int taille){
+	public void setTaille(int taille){
 		this.taille = taille;
 	}
 	
