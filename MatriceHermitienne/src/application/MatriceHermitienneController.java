@@ -102,25 +102,33 @@ public class MatriceHermitienneController {
 		// Création d'une liste de valeurs
 		List<Long> lstValeurs = new ArrayList<Long>();
 		
-		// Récupération et ajout à la liste des vals de la matrice
-		lstValeurs.add(0, Long.parseLong(champMatrice1_1.getText()));
-		lstValeurs.add(1, Long.parseLong(champMatrice1_2.getText()));
-		lstValeurs.add(2, Long.parseLong(champMatrice1_3.getText()));
-		lstValeurs.add(3, Long.parseLong(champMatrice2_1.getText()));
-		lstValeurs.add(4, Long.parseLong(champMatrice2_2.getText()));
-		lstValeurs.add(5, Long.parseLong(champMatrice2_3.getText()));
-		lstValeurs.add(6, Long.parseLong(champMatrice3_1.getText()));
-		lstValeurs.add(7, Long.parseLong(champMatrice3_2.getText()));
-		lstValeurs.add(8, Long.parseLong(champMatrice3_3.getText()));
-		
 		// Si bouton radio 2x2 coché
 		if(choix2x2.isSelected()){
-			// Création d'une matrice 2x2
-			Matrice matrice2x2 = new Matrice(2, lstValeurs);
+			
+			// Récup des valeurs de la matrice 2x2
+			lstValeurs.add(0, Long.parseLong(champMatrice1_1.getText()));
+			lstValeurs.add(1, Long.parseLong(champMatrice1_2.getText()));
+			lstValeurs.add(2, Long.parseLong(champMatrice2_1.getText()));
+			lstValeurs.add(3, Long.parseLong(champMatrice2_2.getText()));
+
+			// Création de la matrice via le constructeur paramétré
+			Matrice matrice2x2 = new Matrice(2, lstValeurs);	
 			
 		}
 		else if(choix3x3.isSelected()){
-			// Création d'une matrice 2x2
+			
+			// Récup des valeurs de la matrice 3x3
+			lstValeurs.add(0, Long.parseLong(champMatrice1_1.getText()));
+			lstValeurs.add(1, Long.parseLong(champMatrice1_2.getText()));
+			lstValeurs.add(2, Long.parseLong(champMatrice1_3.getText()));
+			lstValeurs.add(3, Long.parseLong(champMatrice2_1.getText()));
+			lstValeurs.add(4, Long.parseLong(champMatrice2_2.getText()));
+			lstValeurs.add(5, Long.parseLong(champMatrice2_3.getText()));
+			lstValeurs.add(6, Long.parseLong(champMatrice3_1.getText()));
+			lstValeurs.add(7, Long.parseLong(champMatrice3_2.getText()));
+			lstValeurs.add(8, Long.parseLong(champMatrice3_3.getText()));
+			
+			// Création d'une matrice 3x3
 			Matrice matrice3x3 = new Matrice(3, lstValeurs);
 		}
 	}
