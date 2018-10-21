@@ -29,14 +29,8 @@ public class Matrice {
 	    	// Pour chaque colonne de la ligne
 	        for(int j = 0; j < taille; j++)
 	        {
-	        	// Pour la 1ère case de la matrice
-	        	if (i==0 && j==0){
-		            matrice[i][j] = valeurs.get(0);
-	        	}
-	        	else{
-	        		// La case reçoit le prochain élément de l'itérateur
-	        		matrice[i][j] = it.next();
-	        	}
+        		matrice[i][j] = it.next();
+        		System.out.println(matrice[i][j]);
 	        }
 	    }
 	}

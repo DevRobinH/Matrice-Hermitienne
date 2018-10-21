@@ -87,14 +87,17 @@ public class MatriceHermitienneController {
 	 * @param Evenement au clic du bouton Calculer
 	 */
 	public void actionCalculer(ActionEvent evt){
-		System.out.println(champMatrice1_1.getText());
-		System.out.println(champMatrice1_2.getText());
-		System.out.println(champMatrice1_3.getText());
-		System.out.println(champMatrice2_1.getText());
-		System.out.println(champMatrice2_2.getText());
-		System.out.println(champMatrice2_3.getText());
-		System.out.println(champMatrice3_1.getText());
-		System.out.println(Integer.valueOf(champMatrice3_2.getText()));
+		
+		// Affichage en console des valeurs
+		//System.out.println(champMatrice1_1.getText());
+		//System.out.println(champMatrice1_2.getText());
+		//System.out.println(champMatrice1_3.getText());
+		//System.out.println(champMatrice2_1.getText());
+		//System.out.println(champMatrice2_2.getText());
+		//System.out.println(champMatrice2_3.getText());
+		//System.out.println(champMatrice3_1.getText());
+		//System.out.println(champMatrice3_2.getText());
+		//System.out.println(champMatrice3_3.getText());
 		
 		// Création d'une liste de valeurs
 		List<Long> lstValeurs = new ArrayList<Long>();
@@ -114,6 +117,7 @@ public class MatriceHermitienneController {
 		if(choix2x2.isSelected()){
 			// Création d'une matrice 2x2
 			Matrice matrice2x2 = new Matrice(2, lstValeurs);
+			
 		}
 		else if(choix3x3.isSelected()){
 			// Création d'une matrice 2x2
