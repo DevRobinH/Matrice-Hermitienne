@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -45,6 +46,9 @@ public class MatriceHermitienneController {
 	
 	@FXML
 	private Button btCalculer;
+	
+	@FXML
+	private Label lbMatSymetrique;
 	
 	/**
 	 * Méthode pour bloquer/débloquer les cases suite au choix de la matrice
@@ -102,6 +106,9 @@ public class MatriceHermitienneController {
 		// Création d'une liste de valeurs
 		List<Long> lstValeurs = new ArrayList<Long>();
 		
+		// Variable pour savoir si une matrice est symétrique
+		boolean matSymetrique = false;
+		
 		// Si bouton radio 2x2 coché
 		if(choix2x2.isSelected()){
 			
@@ -112,8 +119,16 @@ public class MatriceHermitienneController {
 			lstValeurs.add(3, Long.parseLong(champMatrice2_2.getText()));
 
 			// Création de la matrice via le constructeur paramétré
-			Matrice matrice2x2 = new Matrice(2, lstValeurs);	
+			Matrice matrice2x2 = new Matrice(2, lstValeurs);
 			
+			// La matrice est-elle symétrique ?
+			matSymetrique = matrice2x2.estSymetrique(matrice2x2.GetMatrice());
+			
+			if (matSymetrique)
+				lbMatSymetrique.setText("La matrice 2x2 est symétrique");
+			else{
+				lbMatSymetrique.setText("La matrice 2x2 n'est pas symétrique");
+			}
 		}
 		else if(choix3x3.isSelected()){
 			
@@ -130,6 +145,15 @@ public class MatriceHermitienneController {
 			
 			// Création d'une matrice 3x3
 			Matrice matrice3x3 = new Matrice(3, lstValeurs);
+			
+			// La matrice est-elle symétrique ?
+			matSymetrique = matrice3x3.estSymetrique(matrice3x3.GetMatrice());	
+			
+			if (matSymetrique)
+				lbMatSymetrique.setText("La matrice 3x3 est symétrique");
+			else{
+				lbMatSymetrique.setText("La matrice 3x3 n'est pas symétrique");
+			}
 		}
 	}
 	

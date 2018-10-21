@@ -106,6 +106,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="116.0" layoutY="342.0" stroke="#b7bcbd" strokeType="INSIDE" width="340.0" />
+            <Label fx:id="lbMatSymetrique" layoutX="152.0" layoutY="362.0" prefHeight="30.0" prefWidth="294.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="161.0" layoutY="332.0" style="-fx-background-color: #F4F4F4;" text="Symétrie" textFill="#347397">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
