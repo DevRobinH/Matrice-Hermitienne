@@ -1,4 +1,7 @@
 package Model;
+
+import java.util.Arrays;
+
 /**
  * Gestion des vecteurs
  * @author QMS,Flo M, Multirob
@@ -82,4 +85,14 @@ public class Vecteur {
 	public void setNorme(double norme) {
 		this.norme = norme;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Vecteur [x=" + Arrays.toString(x) + ", norme=" + norme + "]";
+	}
+	
+	
 }

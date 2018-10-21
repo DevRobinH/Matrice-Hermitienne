@@ -87,22 +87,27 @@ public class Matrice {
 		if(this.taille == 2 && x.getX().length == 2) {
 			valeur[0] = this.matrice[0][0]* x.getX()[0]
 					  + this.matrice[0][1]* x.getX()[1];
+			//System.out.println("valeur : "+valeur[0]);
 			
 			valeur[1] = this.matrice[1][0]* x.getX()[0]
 					  + this.matrice[1][1]* x.getX()[1];
+		//	System.out.println("valeur : "+valeur[1]);
 		// matrice taille 3
-		} else if(this.taille == 2 && x.getX().length == 2) {
+		} else if(this.taille == 3 && x.getX().length == 3) {
 			valeur[0] = this.matrice[0][0]* x.getX()[0]
 					  + this.matrice[0][1]* x.getX()[1]
 					  + this.matrice[0][2]* x.getX()[2];
+			System.out.println("valeur : "+valeur[0]);
 			
 			valeur[1] = this.matrice[1][0]* x.getX()[0]
 					  + this.matrice[1][1]* x.getX()[1]
 					  + this.matrice[1][2]* x.getX()[2];
+			//System.out.println("valeur : "+valeur[1]);
 			
-			valeur[1] = this.matrice[2][0]* x.getX()[0]
+			valeur[2] = this.matrice[2][0]* x.getX()[0]
 					  + this.matrice[2][1]* x.getX()[1]
 					  + this.matrice[2][2]* x.getX()[2];
+		//	System.out.println("valeur : "+valeur[2]);
 		}
 		
 		return new Vecteur(valeur);
