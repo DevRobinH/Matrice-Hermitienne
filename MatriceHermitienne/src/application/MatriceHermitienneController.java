@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -264,14 +265,21 @@ public class MatriceHermitienneController {
 	
 	/**
 	 * Ouvre une fenêtre affichant le cour
-	 * @throws IOException 
 	 */
-	public void rappelFenetre() throws IOException{
-		//FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClass().getResource("fenetreRappel.fxml"));
-		//Parent root = (Parent) fxmlLoader.load();
-		//Stage stage = new Stage();
-		//stage.setTitle("Rappel sur les vecteurs propres");
-		
+	public void rappelFenetre(ActionEvent evt){
+		try{
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fenetreRappel.fxml"));
+			Parent root = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Rappel sur les vecteurs propres");
+			
+			// Logo 3iL
+			stage.getIcons().setAll(new Image(getClass().getResource("3ilogo.png").toExternalForm()));
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch (Exception e){
+			System.out.println("Chargement de la page impossible");
+		}
 	}
 	
 }

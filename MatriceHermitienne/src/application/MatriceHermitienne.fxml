@@ -85,7 +85,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Button fx:id="btCalculer" layoutX="576.0" layoutY="279.0" mnemonicParsing="false" onAction="#actionCalculer" prefHeight="25.0" prefWidth="110.0" text="Calculer">
+            <Button fx:id="btCalculer" layoutX="576.0" layoutY="279.0" mnemonicParsing="false" onAction="#actionCalculer" prefHeight="25.0" prefWidth="110.0" text="Valider">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
