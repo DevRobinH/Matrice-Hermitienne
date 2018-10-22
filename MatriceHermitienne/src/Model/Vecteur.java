@@ -58,6 +58,19 @@ public class Vecteur {
 		
 		return norme;
 	}
+	
+	/**
+	 * Division des valeurs du vecteur par un nombre
+	 * @param valeur nombre servant à effectuer la division
+	 * @return le vecteur avec les nouvelles valeurs
+	 */
+	public Vecteur divise(double valeur) {
+		Complexe[] valeursVecteur = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
+		for(int i = 0; i < x.length; i++) {
+			valeursVecteur[i] = this.getX()[i].multiplication(1/valeur);  
+		}
+		return new Vecteur(valeursVecteur);
+	}
 	/**
 	 * @return the x
 	 */

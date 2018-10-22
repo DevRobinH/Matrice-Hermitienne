@@ -117,12 +117,61 @@ public class TestMatrice {
 				Vecteur xk= m3x3.mutiplication(x);
 				System.out.println(xk.toString());
 	}
+	
+	/** 
+	 * Test de la methode multiplication  
+	 */
+	public static void testMethodePuissance() {
+		// Création des valeurs complexes pour la matrice
+		Complexe val1_1 = new Complexe(4.0,0), 
+				val1_2 = new Complexe(0.0,1.0),
+				val1_3 = new Complexe(0.0,-1.0),
+				val2_1 = new Complexe(0.0,-1.0),
+				val2_2 = new Complexe(4.0,0.0),
+				val2_3 = new Complexe(1.0,0.0),
+				val3_1 = new Complexe(0.0,1.0),
+				val3_2 = new Complexe(1.0,0),
+				val3_3 = new Complexe(4.0,0);
+		
+		List<Complexe> valeurMatrice2 = new ArrayList<Complexe>();
+		List<Complexe> valeurMatrice3 = new ArrayList<Complexe>();
+		
+		// Matrice 2x2
+		valeurMatrice2.add(val1_1);
+		valeurMatrice2.add(val1_2);
+		valeurMatrice2.add(val2_1);
+		valeurMatrice2.add(val2_2);
+		
+		// Matrice 3x3
+		valeurMatrice3.add(val1_1);
+		valeurMatrice3.add(val1_2);
+		valeurMatrice3.add(val1_3);
+		valeurMatrice3.add(val2_1);
+		valeurMatrice3.add(val2_2);
+		valeurMatrice3.add(val2_3);
+		valeurMatrice3.add(val3_1);
+		valeurMatrice3.add(val3_2);
+		valeurMatrice3.add(val3_3);
+		
+		Matrice m2x2 = new Matrice(2,valeurMatrice2);
+		Matrice m3x3 = new Matrice(3,valeurMatrice3);
+		
+		// création d'un vecteur
+		Complexe[] x0 = {new Complexe(1.0,0.0), 
+		new Complexe(0.0,0.0), new Complexe(0.0,0.0) };
+		
+		Vecteur x = new Vecteur(x0);
+		
+		System.out.println(m3x3.methodePuissance(x));
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		testEstSymetrique();
 		testMultiplication();
+		testMethodePuissance();
 	}
 
 }

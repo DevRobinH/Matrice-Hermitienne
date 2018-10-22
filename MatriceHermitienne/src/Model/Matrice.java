@@ -114,6 +114,24 @@ public class Matrice {
 
 		return new Vecteur(valeur);
 	}
+	
+	/**
+	 * Détermination de la plus grande valeur propre 
+	 * via la méthode de la puissance
+	 * @param x0 vecteur quelconque pour commencer l'agorithme
+	 * @return la plus grande valeur propre
+	 */
+	public double methodePuissance(Vecteur x0) {
+		double precision = 10^-3;  // determiné une precision
+		Vecteur yn;
+		Vecteur zn = x0;
+		for(int i=0; i< 100; i++) {
+			yn = x0;
+			zn = this.mutiplication(x0);
+			x0 = zn.divise(zn.calculNorme());
+		}
+		return zn.calculNorme();
+	}
 
 	/***************** GET ************************/
 
