@@ -2,12 +2,20 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,16 +47,74 @@ public class MatriceHermitienneController {
 	@FXML
 	private RadioButton choix2x2;	
 	@FXML
-	private RadioButton choix3x3;
-    
+	private RadioButton choix3x3;  
 	@FXML
 	private ToggleGroup choixMatrice;
 	
 	@FXML
 	private Button btCalculer;
+	@FXML
+	private Button btCalculerPuissance;
+	@FXML
+	private Button btCalculerPuissanceInverse;
+
+	@FXML
+	private Label lbTitreSymetrique;
+	@FXML
+	private Label lbTitrePuissance;
+	@FXML
+	private Label lbTitrePuissanceInverse;
+	@FXML
+	private Label lbTitreLambdaMax;	
+	@FXML
+	private Label lbTitreLambdaMin;
 	
 	@FXML
-	private Label lbMatSymetrique;
+	private Label lbMatSymetrique; // à l'intérieur du bloc symétrie
+	@FXML
+	private Label lbLambdaMax;
+	@FXML
+	private Label lbLambdaMin;
+	
+	@FXML
+	private TextArea txtAreaPuissance;
+	@FXML
+	private TextArea txtAreaPuissanceInverse;
+	
+	@FXML
+	private Rectangle rectSymetrie;
+	@FXML
+	private Rectangle rectPuissance;
+	@FXML
+	private Rectangle rectPuissanceInverse;
+	@FXML
+	private Rectangle rectLambdaMax;
+	@FXML
+	private Rectangle rectLambdaMin;
+	
+	// Appelé au lancement de l'application
+	@FXML
+	private void initialize(){
+		
+		// Ce qui doit être caché au démarrage
+		btCalculerPuissance.setVisible(false);
+		btCalculerPuissanceInverse.setVisible(false);
+		lbTitreSymetrique.setVisible(false);
+		lbTitrePuissance.setVisible(false);
+		lbTitrePuissanceInverse.setVisible(false);
+		lbTitreLambdaMax.setVisible(false);	
+		lbTitreLambdaMin.setVisible(false);
+		lbMatSymetrique.setVisible(false);
+		lbLambdaMax.setVisible(false);
+		lbLambdaMin.setVisible(false);
+		txtAreaPuissance.setVisible(false);
+		txtAreaPuissanceInverse.setVisible(false);
+		rectSymetrie.setVisible(false);
+		rectPuissance.setVisible(false);
+		rectPuissanceInverse.setVisible(false);
+		rectLambdaMax.setVisible(false);
+		rectLambdaMin.setVisible(false);
+	}
 	
 	/**
 	 * Méthode pour bloquer/débloquer les cases suite au choix de la matrice
@@ -86,9 +152,9 @@ public class MatriceHermitienneController {
 	}
 	
 	/**
-	 * Méthode récupérer les valeurs de la matrice saisie
+	 * Méthode pour récupérer les valeurs de la matrice saisie
 	 * 
-	 * @param Evenement au clic du bouton Calculer
+	 * @param Evenement au clic du bouton Calculer sous la matrice
 	 */
 	public void actionCalculer(ActionEvent evt){
 		
@@ -102,6 +168,19 @@ public class MatriceHermitienneController {
 		//System.out.println(champMatrice3_1.getText());
 		//System.out.println(champMatrice3_2.getText());
 		//System.out.println(champMatrice3_3.getText());
+		
+		// Au clic de Calculer, on fait apparaître les différents blocs
+		btCalculerPuissance.setVisible(true);
+		btCalculerPuissanceInverse.setVisible(true);
+		lbTitreSymetrique.setVisible(true);
+		lbTitrePuissance.setVisible(true);
+		lbTitrePuissanceInverse.setVisible(true);
+		lbMatSymetrique.setVisible(true);
+		txtAreaPuissance.setVisible(true);
+		txtAreaPuissanceInverse.setVisible(true);
+		rectSymetrie.setVisible(true);
+		rectPuissance.setVisible(true);
+		rectPuissanceInverse.setVisible(true);
 		
 		// Création d'une liste de valeurs
 		List<Long> lstValeurs = new ArrayList<Long>();
@@ -155,6 +234,44 @@ public class MatriceHermitienneController {
 				lbMatSymetrique.setText("La matrice 3x3 n'est pas symétrique");
 			}
 		}
+	}
+	
+	/**
+	 * Méthode pour calculer lamda max (méthode de la puissance)
+	 * 
+	 * @param Evenement au clic du bouton Calculer du bloc puissance
+	 */
+	public void actionPuissance(ActionEvent evt){
+		
+		// Au clic, les blocs du bas sont rendus visibles
+		lbTitreLambdaMax.setVisible(true);	
+		lbLambdaMax.setVisible(true);	
+		rectLambdaMax.setVisible(true);
+	}
+	
+	/**
+	 * Méthode pour calculer lamda min (méthode de la puissance inverse)
+	 * 
+	 * @param Evenement au clic du bouton Calculer du bloc puissance inverse
+	 */
+	public void actionPuissanceInverse(ActionEvent evt){
+		
+		// Au clic, les blocs du bas sont rendus visibles
+		lbTitreLambdaMin.setVisible(true);		
+		lbLambdaMin.setVisible(true);	
+		rectLambdaMin.setVisible(true);
+	}
+	
+	/**
+	 * Ouvre une fenêtre affichant le cour
+	 * @throws IOException 
+	 */
+	public void rappelFenetre() throws IOException{
+		//FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClass().getResource("fenetreRappel.fxml"));
+		//Parent root = (Parent) fxmlLoader.load();
+		//Stage stage = new Stage();
+		//stage.setTitle("Rappel sur les vecteurs propres");
+		
 	}
 	
 }

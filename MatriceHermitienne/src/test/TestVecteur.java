@@ -3,7 +3,7 @@ import Model.Vecteur;
 
 /**
  * Test de la classe vecteur
- *@author QMS,Flo M, Multirob
+ *@author QMS,Flo M
  * @version 1.0
  */
 public class TestVecteur {
