@@ -11,9 +11,9 @@ package Model;
 public class Complexe {
 
 	/**Partie réel du nombre complexe*/
-	private final double reel;   
+	private double reel;   
 	/**Partie imaginaire du nombre complexe*/
-	private final double imaginaire;   
+	private double imaginaire;   
 
 	
 	/**
@@ -66,7 +66,7 @@ public class Complexe {
 	 * @param b second membre de l'addition
 	 * @return le resultat de l'addition
 	 */
-	public Complexe plus(Complexe b) {
+	public Complexe addition(Complexe b) {
 		double reel = this.reel + b.reel;
 		double imag = this.imaginaire + b.imaginaire;
 		return new Complexe(reel, imag);
@@ -172,6 +172,17 @@ public class Complexe {
 		if (this.getClass() != x.getClass()) return false;
 		Complexe that = (Complexe) x;
 		return (this.reel == that.reel) && (this.imaginaire == that.imaginaire);
+	}
+	
+	
+	/**
+	 * Determine si deux nombre complexe sont les conjugués l'un de l'autre
+	 * @param x
+	 * @return true si conjugué, false sinon
+	 */
+	public boolean estConjugue(Object x) {
+		Complexe that = (Complexe) x;
+		return (this.reel == that.reel) && (this.imaginaire == -that.imaginaire);
 	}
 
 }
