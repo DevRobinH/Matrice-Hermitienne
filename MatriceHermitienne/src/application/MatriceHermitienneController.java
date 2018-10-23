@@ -30,20 +30,57 @@ public class MatriceHermitienneController {
 	private TextField champMatrice1_2;	
 	@FXML
 	private TextField champMatrice1_3;
-	
 	@FXML
 	private TextField champMatrice2_1;	
 	@FXML
 	private TextField champMatrice2_2;
 	@FXML
 	private TextField champMatrice2_3;
-	
 	@FXML
 	private TextField champMatrice3_1;
 	@FXML
 	private TextField champMatrice3_2;
 	@FXML
 	private TextField champMatrice3_3;		
+	
+	@FXML
+	private TextField champMatriceInv1_1;	
+	@FXML
+	private TextField champMatriceInv1_2;	
+	@FXML
+	private TextField champMatriceInv1_3;
+	@FXML
+	private TextField champMatriceInv2_1;	
+	@FXML
+	private TextField champMatriceInv2_2;
+	@FXML
+	private TextField champMatriceInv2_3;
+	@FXML
+	private TextField champMatriceInv3_1;
+	@FXML
+	private TextField champMatriceInv3_2;
+	@FXML
+	private TextField champMatriceInv3_3;
+	
+	@FXML
+	private Label lbMatriceInv1_1;
+	@FXML
+	private Label lbMatriceInv1_2;
+	@FXML
+	private Label lbMatriceInv1_3;
+	@FXML
+	private Label lbMatriceInv2_1;
+	@FXML
+	private Label lbMatriceInv2_2;
+	@FXML
+	private Label lbMatriceInv2_3;
+	@FXML
+	private Label lbMatriceInv3_1;
+	@FXML
+	private Label lbMatriceInv3_2;
+	@FXML
+	private Label lbMatriceInv3_3;
+	
 	
 	@FXML
 	private RadioButton choix2x2;	
@@ -78,11 +115,6 @@ public class MatriceHermitienneController {
 	private Label lbLambdaMin;
 	
 	@FXML
-	private TextArea txtAreaPuissance;
-	@FXML
-	private TextArea txtAreaPuissanceInverse;
-	
-	@FXML
 	private Rectangle rectSymetrie;
 	@FXML
 	private Rectangle rectPuissance;
@@ -108,13 +140,31 @@ public class MatriceHermitienneController {
 		lbMatSymetrique.setVisible(false);
 		lbLambdaMax.setVisible(false);
 		lbLambdaMin.setVisible(false);
-		txtAreaPuissance.setVisible(false);
-		txtAreaPuissanceInverse.setVisible(false);
 		rectSymetrie.setVisible(false);
 		rectPuissance.setVisible(false);
 		rectPuissanceInverse.setVisible(false);
 		rectLambdaMax.setVisible(false);
 		rectLambdaMin.setVisible(false);
+		
+		lbMatriceInv1_1.setVisible(false);
+		lbMatriceInv1_2.setVisible(false);
+		lbMatriceInv1_3.setVisible(false);
+		lbMatriceInv2_1.setVisible(false);
+		lbMatriceInv2_2.setVisible(false);
+		lbMatriceInv2_3.setVisible(false);
+		lbMatriceInv3_1.setVisible(false);
+		lbMatriceInv3_2.setVisible(false);
+		lbMatriceInv3_3.setVisible(false);
+		
+		champMatriceInv1_1.setVisible(false);
+		champMatriceInv1_2.setVisible(false);
+		champMatriceInv1_3.setVisible(false);
+		champMatriceInv2_1.setVisible(false);
+		champMatriceInv2_2.setVisible(false);
+		champMatriceInv2_3.setVisible(false);
+		champMatriceInv3_1.setVisible(false);
+		champMatriceInv3_2.setVisible(false);
+		champMatriceInv3_3.setVisible(false);
 	}
 	
 	/**
@@ -133,6 +183,12 @@ public class MatriceHermitienneController {
 			champMatrice3_1.setDisable(false);
 			champMatrice3_2.setDisable(false);
 			champMatrice3_3.setDisable(false);
+
+			champMatriceInv1_3.setDisable(false);
+			champMatriceInv2_3.setDisable(false);
+			champMatriceInv3_1.setDisable(false);
+			champMatriceInv3_2.setDisable(false);
+			champMatriceInv3_3.setDisable(false);
 		}
 		else if(choix2x2.isSelected()){
 			
@@ -149,6 +205,13 @@ public class MatriceHermitienneController {
 			champMatrice3_1.setDisable(true);
 			champMatrice3_2.setDisable(true);
 			champMatrice3_3.setDisable(true);
+			
+			// De la matrice inverse également
+			champMatriceInv1_3.setDisable(true);
+			champMatriceInv2_3.setDisable(true);
+			champMatriceInv3_1.setDisable(true);
+			champMatriceInv3_2.setDisable(true);
+			champMatriceInv3_3.setDisable(true);
 		}
 	}
 	
@@ -177,11 +240,29 @@ public class MatriceHermitienneController {
 		lbTitrePuissance.setVisible(true);
 		lbTitrePuissanceInverse.setVisible(true);
 		lbMatSymetrique.setVisible(true);
-		txtAreaPuissance.setVisible(true);
-		txtAreaPuissanceInverse.setVisible(true);
 		rectSymetrie.setVisible(true);
 		rectPuissance.setVisible(true);
 		rectPuissanceInverse.setVisible(true);
+		
+		lbMatriceInv1_1.setVisible(true);
+		lbMatriceInv1_2.setVisible(true);
+		lbMatriceInv1_3.setVisible(true);
+		lbMatriceInv2_1.setVisible(true);
+		lbMatriceInv2_2.setVisible(true);
+		lbMatriceInv2_3.setVisible(true);
+		lbMatriceInv3_1.setVisible(true);
+		lbMatriceInv3_2.setVisible(true);
+		lbMatriceInv3_3.setVisible(true);
+		
+		champMatriceInv1_1.setVisible(true);
+		champMatriceInv1_2.setVisible(true);
+		champMatriceInv1_3.setVisible(true);
+		champMatriceInv2_1.setVisible(true);
+		champMatriceInv2_2.setVisible(true);
+		champMatriceInv2_3.setVisible(true);
+		champMatriceInv3_1.setVisible(true);
+		champMatriceInv3_2.setVisible(true);
+		champMatriceInv3_3.setVisible(true);
 		
 		// Création d'une liste de valeurs
 		List<Long> lstValeurs = new ArrayList<Long>();
