@@ -1,4 +1,5 @@
 package test;
+import Model.Complexe;
 import Model.Vecteur;
 
 /**
@@ -13,10 +14,14 @@ public class TestVecteur {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		double[] valeurs = {1,2,2};
-        Vecteur x0 = new Vecteur (valeurs,0);
-        
+		Complexe[] valeursV3 = {new Complexe(1.0,0),new Complexe(2.0,0),new Complexe(2.0,0)};
+		Complexe[] valeursV2 = {new Complexe(0.0,0),new Complexe(2.0,0)};
+		
+		Vecteur x0 = new Vecteur (valeursV3);
+		Vecteur x1 = new Vecteur (valeursV2);
+		
         System.out.println(x0.calculNorme());
+        System.out.println(x1.calculNorme());
 	}
 
 }

@@ -10,16 +10,27 @@ import java.util.Arrays;
 public class Vecteur {
 	
 	/** les valeurs du vecteur*/
-	private double[] x;	
+	private Complexe[] x;	
 	/**La norme du vecteur*/
 	private double norme;
+	
+	/**
+	 * Création du vecteur par défaut
+	 * @param x Les valeurs du vecteur
+	 */
+	public Vecteur() {
+		super();
+		this.x = null;
+		this.norme = 0;
+	}
+	
 	
 	/**
 	 * Création du vecteur quelconque en début d'algorithme
 	 * en lui attribuant des valeurs
 	 * @param x Les valeurs du vecteur
 	 */
-	public Vecteur(double[] x) {
+	public Vecteur(Complexe[] x) {
 		super();
 		this.x = x;
 		this.norme = this.calculNorme();
@@ -30,7 +41,7 @@ public class Vecteur {
 	 * @param x Les valeurs du vecteur
 	 * @param norme la norme du vecteur
 	 */
-	public Vecteur(double[] x, double norme) {
+	public Vecteur(Complexe[] x, double norme) {
 		super();
 		this.x = x;
 		this.norme = norme;
@@ -44,31 +55,56 @@ public class Vecteur {
 	public double calculNorme() {
 		// norme du vecteur à retourner
 		double norme = 0;
-		
+		//System.out.println(this.getX().length);
 		// Cas vecteur taille 2
+		//System.out.println(this.getX().length);
 		if( this.getX().length == 2) {
-			norme = Math.sqrt(Math.pow(this.getX()[0], 2) 
-					+ Math.pow(this.getX()[1], 2));
+			norme = Math.sqrt(Math.pow(this.getX()[0].module(), 2) 
+					+ Math.pow(this.getX()[1].module(), 2));
 		// Vecteur de taille 3
 		} else if (this.getX().length == 3) {
-			norme = Math.sqrt(Math.pow(this.getX()[0], 2) 
-					+ Math.pow(this.getX()[1], 2)
-					+ Math.pow(this.getX()[2], 2));
+			norme = Math.sqrt(Math.pow(this.getX()[0].module(), 2) 
+					+ Math.pow(this.getX()[1].module(), 2)
+					+ Math.pow(this.getX()[2].module(), 2));
 	    }
 		
 		return norme;
 	}
+	
+	/**
+	 * Division des valeurs du vecteur par un nombre
+	 * @param valeur nombre servant à effectuer la division
+	 * @return le vecteur avec les nouvelles valeurs
+	 */
+	public Vecteur divise(double valeur) {
+		Complexe[] valeursVecteur3 = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
+		Complexe[] valeursVecteur2 = {new Complexe(0,0),new Complexe(0,0)};
+		
+		// cas veccteur taille 2 
+		if (this.getX().length == 2) {
+			for(int i = 0; i < x.length; i++) {
+				valeursVecteur2[i] = this.getX()[i].multiplication(1/valeur); 
+			}
+			return new Vecteur(valeursVecteur2);
+		// Vecteur taille 3
+		} else {
+			for(int i = 0; i < x.length; i++) {
+				valeursVecteur3[i] = this.getX()[i].multiplication(1/valeur);  
+			}
+			return new Vecteur(valeursVecteur3);
+		}
+	}
 	/**
 	 * @return the x
 	 */
-	public double[] getX() {
+	public Complexe[] getX() {
 		return x;
 	}
 
 	/**
 	 * @param x the x to set
 	 */
-	public void setX(double[] x) {
+	public void setX(Complexe[] x) {
 		this.x = x;
 	}
 
@@ -91,8 +127,16 @@ public class Vecteur {
 	 */
 	@Override
 	public String toString() {
-		return "Vecteur [x=" + Arrays.toString(x) + ", norme=" + norme + "]";
+		StringBuilder chaine = new StringBuilder("[");
+		
+		for(int i = 0; i<this.getX().length; i++) {
+			chaine.append(getX()[i].toString() + " ");
+		}
+		chaine.append("]");
+		return chaine.toString();
 	}
+
+
 	
 	
 }

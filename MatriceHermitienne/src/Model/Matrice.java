@@ -1,136 +1,205 @@
 package Model;
 
 import Model.Vecteur;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import Model.Complexe;
 
+/**
+ * Gestion de matrice carré 2x2 et 3x3
+ * Afin de determiner leurs valeurs propre (plus grande et plus petites)
+ * Matrice hermitienne et symétrique gérée
+ * @author QMS,Flo M, Multirob
+ * @version 1.0
+ */
 public class Matrice {
 
-	private long[][] matrice;	
-	private int taille; // 1 seule variable car matrice carrée
-	List<Long> valeurs;
-	
-	/**
-	 * Constructeur paramétré
-	 * @param taille : définit la taille de la matrice
+
+	/** taille de la matrice carré */
+	private int taille; 
+	/** Valeur de la matrice carré 
+	 * à chaque multiple de taille on passe à la ligne suivante de la matrice
 	 */
-	public Matrice(int taille, List<Long> valeurs)
-	{
-		// Création de la matrice de taille passée en paramètre
-	    this.matrice = new long[taille][taille];
-	    
-	    this.taille = taille;
+	private List<Complexe> valeurs;
 
-	    // Itérator pour parcourir la liste de valeurs
-	    ListIterator<Long> it = valeurs.listIterator();
-	    
-	    // Pour chaque ligne
-	    for(int i = 0; i < taille; i++)
-	    {
-	    	// Pour chaque colonne de la ligne
-	        for(int j = 0; j < taille; j++)
-	        {
-        		matrice[i][j] = it.next();
-        		System.out.println(matrice[i][j]);
-	        }
-	    }
+	/**
+	 * Création d'une matrice en lui attribuant une taille et des valeurs
+	 * @param taille la taille de la matrice
+	 * @param valeurs liste des valeurs de la matrice
+	 */
+	public Matrice(int taille, List<Complexe> valeurs)
+	{   
+		this.taille = taille;
+		// Itérator pour parcourir la liste de valeurs
+		this.valeurs = valeurs; 
+	}
+
+
+	/**
+	 * Détermine si une matrice est symétrique (valeurs réels)
+	 * ou si ell est hermitienne (valeurs complexe)
+	 * c'est à dire que les opposées par rapport à la diagonales sont égaux 
+	 * ou bien elles sont le conjuguées l'une de l'autre
+	 * @return true si matrice symétrique/hermitienne false sinon 
+	 */
+	public boolean estHermitienne(){
+		// variable temporaire de stockage
+		Complexe val1_2, val1_3,val2_1 ,val2_3,val3_1,val3_2;
+
+		// cas matrice 2x2 
+		if (this.getTaille() == 2) {
+			// Récupération des valeurs à comparer
+			val1_2 = new Complexe(this.getValeurs().get(1).getReel()
+					,this.getValeurs().get(1).getImaginaire());
+			val2_1 = new Complexe(this.getValeurs().get(2).getReel()
+					,this.getValeurs().get(2).getImaginaire());
+
+			return val1_2.equals(val2_1) || val1_2.estConjugue(val2_1)  ;
+			// cas matrice 3x3
+		} else if (this.getTaille() == 3) {
+			// Récupération des valeurs à comparer
+			val1_2 = new Complexe(this.getValeurs().get(1).getReel()
+					,this.getValeurs().get(1).getImaginaire());
+			val1_3 = new Complexe(this.getValeurs().get(2).getReel()
+					,this.getValeurs().get(2).getImaginaire());
+			val2_1 = new Complexe(this.getValeurs().get(3).getReel()
+					,this.getValeurs().get(3).getImaginaire());
+			val2_3 = new Complexe(this.getValeurs().get(5).getReel()
+					,this.getValeurs().get(5).getImaginaire());
+			val3_1 = new Complexe(this.getValeurs().get(6).getReel()
+					,this.getValeurs().get(6).getImaginaire());
+			val3_2 = new Complexe(this.getValeurs().get(7).getReel()
+					,this.getValeurs().get(7).getImaginaire());
+
+			return (val1_2.equals(val2_1) || val1_2.estConjugue(val2_1))
+					&& (val1_3.equals(val3_1) || val1_3.estConjugue(val3_1)) 
+					&& (val2_3.equals(val3_2) || val2_3.estConjugue(val3_2));		
+		}
+		return false;
 	}
 	
-	public boolean estSymetrique(long[][] matrice){
-		
-		Long val1_2=0L, val1_3=0L, val2_1=0L, val2_3=0L, val3_1=0L, val3_2=0L;
-		
-		// Pour chaque ligne
-	    for(int i = 0; i < taille; i++)
-	    {
-	    	// Pour chaque colonne de la ligne
-	        for(int j = 0; j < taille; j++)
-	        {
-	        	// Récupération des valeurs aux coordonnées appropriées
-        		if (i==0 && j==1)
-        			val1_2 = matrice[0][1];
-        		if (i==1 && j==0)
-        			val2_1 = matrice[1][0];
-        		if (i==0 && j==2)
-        			val1_3 = matrice[0][2];
-        		if (i==2 && j==0)
-        			val3_1 = matrice[2][0];
-        		if (i==1 && j==2)
-        			val2_3 = matrice[1][2];
-        		if (i==2 && j==1)
-        			val3_2 = matrice[2][1];
-	        }
-	    }
-	    
-	    //System.out.println("La matrice est-elle symétrique ?");
-	    //System.out.println(val1_2);
-	    //System.out.println(val2_1);
-	    //System.out.println(val1_3);
-	    //System.out.println(val3_1);
-	    //System.out.println(val2_3);
-	    //System.out.println(val3_2);
-	    
-	    // Si les valeurs correspondent
-	    if(val1_2 == val2_1 && val1_3 == val3_1 && val2_3 == val3_2) {
-			return true; // La matrice est symétrique
-	    }
-	    else{
-	    	return false;
-	    }
-
-	}
 	
+
 	public Vecteur mutiplication(Vecteur x) {
-		double[] valeur = {0,0,0};
-		
+		Complexe[] valeurVec3 = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
+		Complexe[] valeurVec2 = {new Complexe(0,0),new Complexe(0,0)};
 		// si matrice et vecteur taille 2
 		if(this.taille == 2 && x.getX().length == 2) {
-			valeur[0] = this.matrice[0][0]* x.getX()[0]
-					  + this.matrice[0][1]* x.getX()[1];
+			valeurVec2[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
+					.addition(this.getValeurs().get(1).multiplication(x.getX()[1]));
 			//System.out.println("valeur : "+valeur[0]);
-			
-			valeur[1] = this.matrice[1][0]* x.getX()[0]
-					  + this.matrice[1][1]* x.getX()[1];
-		//	System.out.println("valeur : "+valeur[1]);
-		// matrice taille 3
+
+			valeurVec2[1] = (this.getValeurs().get(2).multiplication(x.getX()[0]))
+					.addition(this.getValeurs().get(3).multiplication(x.getX()[1]));
+			//	System.out.println("valeur : "+valeur[1]);
+			// matrice taille 3
+			return new Vecteur(valeurVec2);
 		} else if(this.taille == 3 && x.getX().length == 3) {
-			valeur[0] = this.matrice[0][0]* x.getX()[0]
-					  + this.matrice[0][1]* x.getX()[1]
-					  + this.matrice[0][2]* x.getX()[2];
-			System.out.println("valeur : "+valeur[0]);
-			
-			valeur[1] = this.matrice[1][0]* x.getX()[0]
-					  + this.matrice[1][1]* x.getX()[1]
-					  + this.matrice[1][2]* x.getX()[2];
+			valeurVec3[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
+					.addition(this.getValeurs().get(1).multiplication(x.getX()[1]))
+					.addition(this.getValeurs().get(2).multiplication(x.getX()[2]));
+			//System.out.println("valeur : "+valeur[0]);
+
+			valeurVec3[1] = (this.getValeurs().get(3).multiplication(x.getX()[0]))
+					.addition(this.getValeurs().get(4).multiplication(x.getX()[1]))
+					.addition(this.getValeurs().get(5).multiplication(x.getX()[2]));
 			//System.out.println("valeur : "+valeur[1]);
-			
-			valeur[2] = this.matrice[2][0]* x.getX()[0]
-					  + this.matrice[2][1]* x.getX()[1]
-					  + this.matrice[2][2]* x.getX()[2];
-		//	System.out.println("valeur : "+valeur[2]);
+
+			valeurVec3[2] = (this.getValeurs().get(6).multiplication(x.getX()[0]))
+					.addition(this.getValeurs().get(7).multiplication(x.getX()[1]))
+					.addition(this.getValeurs().get(8).multiplication(x.getX()[2]));;
+			//	System.out.println("valeur : "+valeur[2]);
+			return new Vecteur(valeurVec3);		
 		}
+
+		return new Vecteur();
+	}
+	
+	/**
+	 * Détermination de la plus grande valeur propre 
+	 * via la méthode de la puissance
+	 * @param x0 vecteur initiale pour commencer l'agorithme
+	 * @return la plus grande valeur propre
+	 */
+	public double methodePuissance(Vecteur x0) {
+		double precision = 0.005;  // precision
+		Vecteur yn = new Vecteur();  
+		Vecteur zn = new Vecteur();
+		// tant que la soustraction des normes est infieur à la précision
+		// on laisse tournée l'algo 
+		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
+            System.out.println(x0.calculNorme() - yn.calculNorme());
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}*/
+		for(int i=0; i< 1000; i++) {
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}
+		return zn.calculNorme();
+	}
+	
+	/**
+	 * Détermination de la plus petite valeur propre 
+	 * via la méthode de la puissance Inverse
+	 * @param x0 vecteur initiale pour commencer l'agorithme
+	 * @return la plus petite valeur propre
+	 */
+	public double methodePuissanceInverse(Vecteur x0) {
+		double precision = 0.005;  // precision
+		Vecteur yn = new Vecteur();  
+		Vecteur zn = new Vecteur();
+		// tant que la soustraction des normes est infieur à la précision
+		// on laisse tournée l'algo 
+		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
+            System.out.println(x0.calculNorme() - yn.calculNorme());
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}*/
+		for(int i = 0; i < 100000; i++) {
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}
+		return 1/zn.calculNorme();
 		
-		return new Vecteur(valeur);
 	}
-	
+
 	/***************** GET ************************/
-	
-	public long[][]getMatrice(){
-		return matrice;
-	}
-	
+
+
 	public int getTaille(){
 		return taille;
 	}
-	
-	/***************** SET ************************/
-	
-	public void setMatrice(long[][] matrice){
-		this.matrice = matrice;
+
+
+
+	/**
+	 * @return the valeurs
+	 */
+	public List<Complexe> getValeurs() {
+		return valeurs;
 	}
-	
+
+
+	/**
+	 * @param valeurs the valeurs to set
+	 */
+	public void setValeurs(List<Complexe> valeurs) {
+		this.valeurs = valeurs;
+	}
+
+
+	/***************** SET ************************/
+
+
 	public void setTaille(int taille){
 		this.taille = taille;
 	}
-	
+
 }
