@@ -83,54 +83,91 @@ public class Matrice {
 	
 
 	public Vecteur mutiplication(Vecteur x) {
-		Complexe[] valeur = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
-
+		Complexe[] valeurVec3 = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
+		Complexe[] valeurVec2 = {new Complexe(0,0),new Complexe(0,0)};
 		// si matrice et vecteur taille 2
 		if(this.taille == 2 && x.getX().length == 2) {
-			valeur[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
+			valeurVec2[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(1).multiplication(x.getX()[1]));
 			//System.out.println("valeur : "+valeur[0]);
 
-			valeur[1] = (this.getValeurs().get(2).multiplication(x.getX()[0]))
+			valeurVec2[1] = (this.getValeurs().get(2).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(3).multiplication(x.getX()[1]));
 			//	System.out.println("valeur : "+valeur[1]);
 			// matrice taille 3
+			return new Vecteur(valeurVec2);
 		} else if(this.taille == 3 && x.getX().length == 3) {
-			valeur[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
+			valeurVec3[0] = (this.getValeurs().get(0).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(1).multiplication(x.getX()[1]))
 					.addition(this.getValeurs().get(2).multiplication(x.getX()[2]));
 			//System.out.println("valeur : "+valeur[0]);
 
-			valeur[1] = (this.getValeurs().get(3).multiplication(x.getX()[0]))
+			valeurVec3[1] = (this.getValeurs().get(3).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(4).multiplication(x.getX()[1]))
 					.addition(this.getValeurs().get(5).multiplication(x.getX()[2]));
 			//System.out.println("valeur : "+valeur[1]);
 
-			valeur[2] = (this.getValeurs().get(6).multiplication(x.getX()[0]))
+			valeurVec3[2] = (this.getValeurs().get(6).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(7).multiplication(x.getX()[1]))
 					.addition(this.getValeurs().get(8).multiplication(x.getX()[2]));;
 			//	System.out.println("valeur : "+valeur[2]);
+			return new Vecteur(valeurVec3);		
 		}
 
-		return new Vecteur(valeur);
+		return new Vecteur();
 	}
 	
 	/**
 	 * Détermination de la plus grande valeur propre 
 	 * via la méthode de la puissance
-	 * @param x0 vecteur quelconque pour commencer l'agorithme
+	 * @param x0 vecteur initiale pour commencer l'agorithme
 	 * @return la plus grande valeur propre
 	 */
 	public double methodePuissance(Vecteur x0) {
-		double precision = 10^-3;  // determiné une precision
-		Vecteur yn;
-		Vecteur zn = x0;
-		for(int i=0; i< 100; i++) {
+		double precision = 0.005;  // precision
+		Vecteur yn = new Vecteur();  
+		Vecteur zn = new Vecteur();
+		// tant que la soustraction des normes est infieur à la précision
+		// on laisse tournée l'algo 
+		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
+            System.out.println(x0.calculNorme() - yn.calculNorme());
 			yn = x0;
 			zn = this.mutiplication(x0);
-			x0 = zn.divise(zn.calculNorme());
+		    x0 = zn.divise(zn.calculNorme());	
+		}*/
+		for(int i=0; i< 1000; i++) {
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
 		}
 		return zn.calculNorme();
+	}
+	
+	/**
+	 * Détermination de la plus petite valeur propre 
+	 * via la méthode de la puissance Inverse
+	 * @param x0 vecteur initiale pour commencer l'agorithme
+	 * @return la plus petite valeur propre
+	 */
+	public double methodePuissanceInverse(Vecteur x0) {
+		double precision = 0.005;  // precision
+		Vecteur yn = new Vecteur();  
+		Vecteur zn = new Vecteur();
+		// tant que la soustraction des normes est infieur à la précision
+		// on laisse tournée l'algo 
+		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
+            System.out.println(x0.calculNorme() - yn.calculNorme());
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}*/
+		for(int i = 0; i < 100000; i++) {
+			yn = x0;
+			zn = this.mutiplication(x0);
+		    x0 = zn.divise(zn.calculNorme());	
+		}
+		return 1/zn.calculNorme();
+		
 	}
 
 	/***************** GET ************************/
