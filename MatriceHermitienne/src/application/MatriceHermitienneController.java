@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.QuadCurve;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -44,7 +45,89 @@ public class MatriceHermitienneController {
 	private TextField champMatrice3_3;		
 	
 	@FXML
-	private TextField champMatriceInv1_1;	
+	private RadioButton choix2x2;	
+	@FXML
+	private RadioButton choix3x3;  
+	@FXML
+	private ToggleGroup choixMatrice;
+	
+	@FXML
+	private Button btCalculer;
+
+	// Bloc Symétrie
+
+	@FXML
+	private Label lbTitreSymetrique;
+	@FXML
+	private Label lbMatSymetrique; // à l'intérieur du bloc symétrie
+	@FXML
+	private Rectangle rectSymetrie;
+
+	// Bloc Puissance
+
+	@FXML
+	private Rectangle rectPuissance; // Contour
+	@FXML
+	private Label lbTitrePuissance; // Titre du bloc
+	@FXML
+	private Label lbMatPuissance; // Label A =
+	@FXML
+	private QuadCurve parentheseGPuissance;
+	@FXML
+	private QuadCurve parentheseDPuissance;
+	@FXML
+	private Button btCalculerPuissance;
+	@FXML
+	private Label lbVecteurPuissance; // Vecteur Xo
+	@FXML
+	private Label lbVecteur1_1; 	// Vecteur de transition bloc puissance
+	@FXML
+	private Label lbVecteur2_1;
+	@FXML
+	private Label lbVecteur3_1;
+	@FXML
+	private QuadCurve parentheseGVecteur;
+	@FXML
+	private QuadCurve parentheseDVecteur;
+	
+	@FXML
+	private Label lbMatrice1_1;
+	@FXML
+	private Label lbMatrice1_2;
+	@FXML
+	private Label lbMatrice1_3;
+	@FXML
+	private Label lbMatrice2_1;
+	@FXML
+	private Label lbMatrice2_2;
+	@FXML
+	private Label lbMatrice2_3;
+	@FXML
+	private Label lbMatrice3_1;
+	@FXML
+	private Label lbMatrice3_2;
+	@FXML
+	private Label lbMatrice3_3;
+
+	// Bloc Puissance Inverse
+	
+	@FXML
+	private QuadCurve parentheseGPuissanceInv;
+	@FXML
+	private QuadCurve parentheseDPuissanceInv;
+	@FXML
+	private Rectangle rectPuissanceInverse;
+	@FXML
+	private Label lbMatPuissanceInv;
+	@FXML
+	private Label lbMatPuissanceInvExposant;
+	@FXML
+	private Label lbTitrePuissanceInverse;
+	@FXML
+	private Button btCalculerPuissanceInverse;
+	
+	@FXML
+	private TextField champMatriceInv1_1; // Matrice inverse à saisir
 	@FXML
 	private TextField champMatriceInv1_2;	
 	@FXML
@@ -62,109 +145,85 @@ public class MatriceHermitienneController {
 	@FXML
 	private TextField champMatriceInv3_3;
 	
-	@FXML
-	private Label lbMatriceInv1_1;
-	@FXML
-	private Label lbMatriceInv1_2;
-	@FXML
-	private Label lbMatriceInv1_3;
-	@FXML
-	private Label lbMatriceInv2_1;
-	@FXML
-	private Label lbMatriceInv2_2;
-	@FXML
-	private Label lbMatriceInv2_3;
-	@FXML
-	private Label lbMatriceInv3_1;
-	@FXML
-	private Label lbMatriceInv3_2;
-	@FXML
-	private Label lbMatriceInv3_3;
+	//Lambdas du bas
 	
-	
-	@FXML
-	private RadioButton choix2x2;	
-	@FXML
-	private RadioButton choix3x3;  
-	@FXML
-	private ToggleGroup choixMatrice;
-	
-	@FXML
-	private Button btCalculer;
-	@FXML
-	private Button btCalculerPuissance;
-	@FXML
-	private Button btCalculerPuissanceInverse;
-
-	@FXML
-	private Label lbTitreSymetrique;
-	@FXML
-	private Label lbTitrePuissance;
-	@FXML
-	private Label lbTitrePuissanceInverse;
 	@FXML
 	private Label lbTitreLambdaMax;	
 	@FXML
 	private Label lbTitreLambdaMin;
-	
-	@FXML
-	private Label lbMatSymetrique; // à l'intérieur du bloc symétrie
 	@FXML
 	private Label lbLambdaMax;
 	@FXML
 	private Label lbLambdaMin;
-	
-	@FXML
-	private Rectangle rectSymetrie;
-	@FXML
-	private Rectangle rectPuissance;
-	@FXML
-	private Rectangle rectPuissanceInverse;
 	@FXML
 	private Rectangle rectLambdaMax;
 	@FXML
 	private Rectangle rectLambdaMin;
+	
+	
+	
 	
 	// Appelé au lancement de l'application
 	@FXML
 	private void initialize(){
 		
 		// Ce qui doit être caché au démarrage
-		btCalculerPuissance.setVisible(false);
-		btCalculerPuissanceInverse.setVisible(false);
+		
+		// Bloc Symétrie
 		lbTitreSymetrique.setVisible(false);
-		lbTitrePuissance.setVisible(false);
-		lbTitrePuissanceInverse.setVisible(false);
-		lbTitreLambdaMax.setVisible(false);	
-		lbTitreLambdaMin.setVisible(false);
 		lbMatSymetrique.setVisible(false);
-		lbLambdaMax.setVisible(false);
-		lbLambdaMin.setVisible(false);
 		rectSymetrie.setVisible(false);
+
+		// Bloc Puissance
 		rectPuissance.setVisible(false);
+		lbTitrePuissance.setVisible(false);
+		lbMatPuissance.setVisible(false);
+		parentheseGPuissance.setVisible(false);
+		parentheseDPuissance.setVisible(false);
+		btCalculerPuissance.setVisible(false);
+		lbVecteurPuissance.setVisible(false);
+		lbVecteur1_1.setVisible(false);
+		lbVecteur2_1.setVisible(false);
+		lbVecteur3_1.setVisible(false);
+		parentheseGVecteur.setVisible(false);
+		parentheseDVecteur.setVisible(false);
+				
+		lbMatrice1_1.setVisible(false);
+		lbMatrice1_2.setVisible(false);
+		lbMatrice1_3.setVisible(false);
+		lbMatrice2_1.setVisible(false);
+		lbMatrice2_2.setVisible(false);
+		lbMatrice2_3.setVisible(false);
+		lbMatrice3_1.setVisible(false);
+		lbMatrice3_2.setVisible(false);
+		lbMatrice3_3.setVisible(false);
+
+		// Bloc Puissance Inverse
+		parentheseGPuissanceInv.setVisible(false);
+		parentheseDPuissanceInv.setVisible(false);
 		rectPuissanceInverse.setVisible(false);
-		rectLambdaMax.setVisible(false);
-		rectLambdaMin.setVisible(false);
-		
-		lbMatriceInv1_1.setVisible(false);
-		lbMatriceInv1_2.setVisible(false);
-		lbMatriceInv1_3.setVisible(false);
-		lbMatriceInv2_1.setVisible(false);
-		lbMatriceInv2_2.setVisible(false);
-		lbMatriceInv2_3.setVisible(false);
-		lbMatriceInv3_1.setVisible(false);
-		lbMatriceInv3_2.setVisible(false);
-		lbMatriceInv3_3.setVisible(false);
-		
+		lbMatPuissanceInv.setVisible(false);
+		lbMatPuissanceInvExposant.setVisible(false);
+		lbTitrePuissanceInverse.setVisible(false);
+		btCalculerPuissanceInverse.setVisible(false);
 		champMatriceInv1_1.setVisible(false);
-		champMatriceInv1_2.setVisible(false);
+		champMatriceInv1_2.setVisible(false);	
 		champMatriceInv1_3.setVisible(false);
-		champMatriceInv2_1.setVisible(false);
+		champMatriceInv2_1.setVisible(false);	
 		champMatriceInv2_2.setVisible(false);
 		champMatriceInv2_3.setVisible(false);
 		champMatriceInv3_1.setVisible(false);
 		champMatriceInv3_2.setVisible(false);
 		champMatriceInv3_3.setVisible(false);
+		
+		//Lambdas du bas
+		lbTitreLambdaMax.setVisible(false);	
+		lbTitreLambdaMin.setVisible(false);
+		lbLambdaMax.setVisible(false);
+		lbLambdaMin.setVisible(false);
+		rectLambdaMax.setVisible(false);
+		rectLambdaMin.setVisible(false);
+		
 	}
 	
 	/**
@@ -234,30 +293,47 @@ public class MatriceHermitienneController {
 		//System.out.println(champMatrice3_3.getText());
 		
 		// Au clic de Calculer, on fait apparaître les différents blocs
-		btCalculerPuissance.setVisible(true);
-		btCalculerPuissanceInverse.setVisible(true);
+		// Bloc Symétrie
 		lbTitreSymetrique.setVisible(true);
-		lbTitrePuissance.setVisible(true);
-		lbTitrePuissanceInverse.setVisible(true);
 		lbMatSymetrique.setVisible(true);
 		rectSymetrie.setVisible(true);
+
+		// Bloc Puissance
 		rectPuissance.setVisible(true);
+		lbTitrePuissance.setVisible(true);
+		lbMatPuissance.setVisible(true);
+		parentheseGPuissance.setVisible(true);
+		parentheseDPuissance.setVisible(true);
+		btCalculerPuissance.setVisible(true);
+		lbVecteurPuissance.setVisible(true);
+		lbVecteur1_1.setVisible(true);
+		lbVecteur2_1.setVisible(true);
+		lbVecteur3_1.setVisible(true);
+		parentheseGVecteur.setVisible(true);
+		parentheseDVecteur.setVisible(true);
+				
+		lbMatrice1_1.setVisible(true);
+		lbMatrice1_2.setVisible(true);
+		lbMatrice1_3.setVisible(true);
+		lbMatrice2_1.setVisible(true);
+		lbMatrice2_2.setVisible(true);
+		lbMatrice2_3.setVisible(true);
+		lbMatrice3_1.setVisible(true);
+		lbMatrice3_2.setVisible(true);
+		lbMatrice3_3.setVisible(true);
+
+		// Bloc Puissance Inverse
+		parentheseGPuissanceInv.setVisible(true);
+		parentheseDPuissanceInv.setVisible(true);
 		rectPuissanceInverse.setVisible(true);
-		
-		lbMatriceInv1_1.setVisible(true);
-		lbMatriceInv1_2.setVisible(true);
-		lbMatriceInv1_3.setVisible(true);
-		lbMatriceInv2_1.setVisible(true);
-		lbMatriceInv2_2.setVisible(true);
-		lbMatriceInv2_3.setVisible(true);
-		lbMatriceInv3_1.setVisible(true);
-		lbMatriceInv3_2.setVisible(true);
-		lbMatriceInv3_3.setVisible(true);
-		
+		lbMatPuissanceInv.setVisible(true);
+		lbMatPuissanceInvExposant.setVisible(true);
+		lbTitrePuissanceInverse.setVisible(true);
+		btCalculerPuissanceInverse.setVisible(true);
 		champMatriceInv1_1.setVisible(true);
-		champMatriceInv1_2.setVisible(true);
+		champMatriceInv1_2.setVisible(true);	
 		champMatriceInv1_3.setVisible(true);
-		champMatriceInv2_1.setVisible(true);
+		champMatriceInv2_1.setVisible(true);	
 		champMatriceInv2_2.setVisible(true);
 		champMatriceInv2_3.setVisible(true);
 		champMatriceInv3_1.setVisible(true);
@@ -278,6 +354,12 @@ public class MatriceHermitienneController {
 			lstValeurs.add(1, Long.parseLong(champMatrice1_2.getText()));
 			lstValeurs.add(2, Long.parseLong(champMatrice2_1.getText()));
 			lstValeurs.add(3, Long.parseLong(champMatrice2_2.getText()));
+			
+			// On reporte les valeurs dans la matrice de la puissance
+			lbMatrice1_1.setText(champMatrice1_1.getText());
+			lbMatrice1_2.setText(champMatrice1_2.getText());
+			lbMatrice2_1.setText(champMatrice2_1.getText());
+			lbMatrice2_2.setText(champMatrice2_2.getText());
 
 			// Création de la matrice via le constructeur paramétré
 			Matrice matrice2x2 = new Matrice(2, lstValeurs);
@@ -303,6 +385,17 @@ public class MatriceHermitienneController {
 			lstValeurs.add(6, Long.parseLong(champMatrice3_1.getText()));
 			lstValeurs.add(7, Long.parseLong(champMatrice3_2.getText()));
 			lstValeurs.add(8, Long.parseLong(champMatrice3_3.getText()));
+			
+			// On reporte les valeurs dans la matrice de la puissance
+			lbMatrice1_1.setText(champMatrice1_1.getText());
+			lbMatrice1_2.setText(champMatrice1_2.getText());
+			lbMatrice1_3.setText(champMatrice1_3.getText());
+			lbMatrice2_1.setText(champMatrice2_1.getText());
+			lbMatrice2_2.setText(champMatrice2_2.getText());
+			lbMatrice2_3.setText(champMatrice2_3.getText());
+			lbMatrice3_1.setText(champMatrice3_1.getText());
+			lbMatrice3_2.setText(champMatrice3_2.getText());
+			lbMatrice3_3.setText(champMatrice3_3.getText());
 			
 			// Création d'une matrice 3x3
 			Matrice matrice3x3 = new Matrice(3, lstValeurs);

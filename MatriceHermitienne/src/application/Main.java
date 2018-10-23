@@ -14,7 +14,7 @@ public class Main extends Application {
 		
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MatriceHermitienne.fxml"));
-			Scene scene = new Scene(root,850,900);
+			Scene scene = new Scene(root,850,780);
 			
 			// Titre de la fenêtre
 			primaryStage.setTitle("Valeurs propres d'une Matrice Hermitienne");
