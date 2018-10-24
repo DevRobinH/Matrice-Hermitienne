@@ -362,10 +362,10 @@ public class MatriceHermitienneController {
 			lbMatrice2_2.setText(champMatrice2_2.getText());
 
 			// Création de la matrice via le constructeur paramétré
-			Matrice matrice2x2 = new Matrice(2, lstValeurs);
+			//Matrice matrice2x2 = new Matrice(2, lstValeurs);
 			
 			// La matrice est-elle symétrique ?
-			matSymetrique = matrice2x2.estSymetrique(matrice2x2.getMatrice());
+			//matSymetrique = matrice2x2.estSymetrique(matrice2x2.getMatrice());
 			
 			if (matSymetrique)
 				lbMatSymetrique.setText("La matrice 2x2 est symétrique");
@@ -398,10 +398,10 @@ public class MatriceHermitienneController {
 			lbMatrice3_3.setText(champMatrice3_3.getText());
 			
 			// Création d'une matrice 3x3
-			Matrice matrice3x3 = new Matrice(3, lstValeurs);
+			//Matrice matrice3x3 = new Matrice(3, lstValeurs);
 			
 			// La matrice est-elle symétrique ?
-			matSymetrique = matrice3x3.estSymetrique(matrice3x3.getMatrice());	
+			//matSymetrique = matrice3x3.estSymetrique(matrice3x3.getMatrice());	
 			
 			if (matSymetrique)
 				lbMatSymetrique.setText("La matrice 3x3 est symétrique");
