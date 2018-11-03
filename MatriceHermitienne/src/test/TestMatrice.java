@@ -59,11 +59,11 @@ public class TestMatrice {
 		
 		String resultat2 = m2x2.estHermitienne() == true 
 				          ?"matrice 2x2 symetrique/hermitienne"
-				          :"matrice 2x2 symetrique/hermitienne";
+				          :"matrice 2x2 n'est pas symetrique/hermitienne";
 		
 		String resultat3 = m3x3.estHermitienne() == true 
 		          ?"matrice 3x3 symetrique/hermitienne"
-		          :"matrice 3x3 symetrique/hermitienne";
+		          :"matrice 3x3 ,nest pas symetrique/hermitienne";
 
 		System.out.println(resultat2+ "\n" + resultat3 );
 	}
@@ -197,7 +197,7 @@ public class TestMatrice {
 		Vecteur x = new Vecteur(x0);
 		Vecteur xi = new Vecteur(x0i);
 		Vecteur x1 = new Vecteur(vx1);
-		System.out.println(m3x3.methodePuissance(x));
+		//System.out.println(m3x3.methodePuissance(x));
 		//System.out.println(m3x3i.methodePuissanceInverse(xi));
 		//m2x2.methodePuissance(x1);
 	}
@@ -208,7 +208,7 @@ public class TestMatrice {
 	public static void main(String[] args) {
 		//testEstSymetrique();
 		//testMultiplication();
-		testMethodePuissance();
+		//testMethodePuissance();
 	}
 
 }

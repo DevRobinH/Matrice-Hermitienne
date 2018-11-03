@@ -113,8 +113,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Rectangle fx:id="rectSymetrie" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="52.0" layoutX="89.0" layoutY="266.0" stroke="#b7bcbd" strokeType="INSIDE" width="340.0" />
-            <Label fx:id="lbMatSymetrique" layoutX="115.0" layoutY="276.0" prefHeight="30.0" prefWidth="294.0">
+            <Rectangle fx:id="rectSymetrie" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="52.0" layoutX="89.0" layoutY="266.0" stroke="#b7bcbd" strokeType="INSIDE" width="356.0" />
+            <Label fx:id="lbMatSymetrique" layoutX="105.0" layoutY="276.0" prefHeight="30.0" prefWidth="324.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -125,14 +125,14 @@
                </font>
             </Label>
             <Rectangle fx:id="rectLambdaMax" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="99.0" layoutY="660.0" stroke="#b7bcbd" strokeType="INSIDE" width="277.0" />
-            <Label fx:id="lbTitreLambdaMax" layoutX="140.0" layoutY="650.0" prefHeight="21.0" prefWidth="52.0" style="-fx-background-color: #F4F4F4;" text=" λ Max " textFill="#347397">
+            <Label fx:id="lbTitreLambdaMax" layoutX="139.0" layoutY="649.0" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #F4F4F4;" text="  λ Max " textFill="#347397">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Rectangle fx:id="rectLambdaMin" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="491.0" layoutY="659.0" stroke="#b7bcbd" strokeType="INSIDE" width="277.0" />
             <Rectangle fx:id="rectPuissance" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="231.0" layoutX="43.0" layoutY="376.0" stroke="#b7bcbd" strokeType="INSIDE" width="379.0" />
-            <Label fx:id="lbTitreLambdaMin" layoutX="539.0" layoutY="646.0" prefHeight="21.0" prefWidth="52.0" style="-fx-background-color: #F4F4F4;" text=" λ Min " textFill="#347397">
+            <Label fx:id="lbTitreLambdaMin" layoutX="539.0" layoutY="647.0" prefHeight="21.0" prefWidth="52.0" style="-fx-background-color: #F4F4F4;" text=" λ Min " textFill="#347397">
                <font>
                   <Font size="16.0" />
                </font>
@@ -147,8 +147,10 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lbLambdaMax" layoutX="130.0" layoutY="686.0" prefHeight="17.0" prefWidth="197.0" />
-            <Label fx:id="lbLambdaMin" layoutX="527.0" layoutY="686.0" prefHeight="17.0" prefWidth="197.0" />
+            <Label fx:id="lbLambdaMax" layoutX="304.0" layoutY="685.0" prefHeight="20.0" prefWidth="52.0" textFill="#347397">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
             <Button fx:id="btCalculerPuissance" layoutX="160.0" layoutY="571.0" mnemonicParsing="false" onAction="#actionPuissance" prefHeight="10.0" prefWidth="135.0" text="Calculer">
                <font>
                   <Font size="11.0" />
@@ -180,39 +182,39 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lbMatrice1_1" layoutX="114.0" layoutY="439.0" text="12+12i">
+            <Label fx:id="lbMatrice1_1" layoutX="114.0" layoutY="439.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice1_2" layoutX="166.0" layoutY="439.0" text="12+12i">
+            <Label fx:id="lbMatrice1_2" layoutX="166.0" layoutY="439.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice1_3" layoutX="217.0" layoutY="439.0" text="12+12i">
+            <Label fx:id="lbMatrice1_3" layoutX="217.0" layoutY="439.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice3_2" layoutX="165.0" layoutY="496.0" text="12+12i">
+            <Label fx:id="lbMatrice3_2" layoutX="165.0" layoutY="496.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice2_2" layoutX="166.0" layoutY="468.0" text="12+12i">
+            <Label fx:id="lbMatrice2_2" layoutX="166.0" layoutY="468.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice2_1" layoutX="115.0" layoutY="468.0" text="12+12i">
+            <Label fx:id="lbMatrice2_1" layoutX="115.0" layoutY="468.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice3_1" layoutX="115.0" layoutY="496.0" text="12+12i">
+            <Label fx:id="lbMatrice3_1" layoutX="115.0" layoutY="496.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice3_3" layoutX="216.0" layoutY="496.0" text="12+12i">
+            <Label fx:id="lbMatrice3_3" layoutX="216.0" layoutY="496.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbMatrice2_3" layoutX="217.0" layoutY="468.0" text="12+12i">
+            <Label fx:id="lbMatrice2_3" layoutX="217.0" layoutY="468.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
@@ -233,7 +235,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="lbVecteur3_1" layoutX="362.0" layoutY="496.0" text="0">
+            <Label fx:id="lbVecteur3_1" layoutX="362.0" layoutY="496.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
@@ -287,6 +289,14 @@
             <Label layoutX="280.0" layoutY="159.0" style="-fx-background-color: #F4F4F4;" text=" Choix Matrice " textFill="#347397">
                <font>
                   <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtLambdaMax" layoutX="119.0" layoutY="686.0" text="La plus grande valeur propre est :" />
+            <Label fx:id="txtLambdaMin" layoutX="514.0" layoutY="685.0" text="La plus petite valeur propre est :" />
+            <Button fx:id="btReinitialiser" layoutX="378.0" layoutY="749.0" mnemonicParsing="false" onAction="#actionReinitialiser" text="    Réinitialiser    " />
+            <Label fx:id="lbLambdaMin" layoutX="694.0" layoutY="683.0" prefHeight="20.0" prefWidth="57.0" textFill="#347397">
+               <font>
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
          </children>

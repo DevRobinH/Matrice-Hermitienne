@@ -137,21 +137,21 @@ public class Matrice {
 			vn = zn.divise(zn.calculNorme());
 			
 			// Affichage pour vérification
-			System.out.println("boucle " + i);
-			System.out.println("Matrice A");
-			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
-				if (j%3 == 0) {
-					System.out.println(" ");
-				}
-				System.out.print(this.getValeurs().get(j) + " ");
-			}
-			System.out.println("\nVecteur Vn");
-			System.out.println(vn__1.toString());
-			System.out.printf("norme vecteur %.4f\n",vn__1.calculNorme());
-			System.out.println("\nVecteur V"+i);
-			System.out.println(vn.toString());
-			System.out.printf("norme vecteur %.4f\n",vn.calculNorme());
-			System.out.println("LAMBDA : " + zn.calculNorme() );
+//			System.out.println("boucle " + i);
+//			System.out.println("Matrice A");
+//			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
+//				if (j%3 == 0) {
+//					System.out.println(" ");
+//				}
+//				System.out.print(this.getValeurs().get(j) + " ");
+//			}
+//			System.out.println("\nVecteur Vn");
+//			System.out.println(vn__1.toString());
+//			System.out.printf("norme vecteur %.4f\n",vn__1.calculNorme());
+//			System.out.println("\nVecteur V"+i);
+//			System.out.println(vn.toString());
+//			System.out.printf("norme vecteur %.4f\n",vn.calculNorme());
+//			System.out.println("LAMBDA : " + zn.calculNorme() );
 		}
 		return zn.calculNorme();
 	}
@@ -177,21 +177,21 @@ public class Matrice {
 			xk = yk_1.divise(yk_1.calculNorme());
 
 			// Affichage pour verification 
-			System.out.println("\nboucle " + i);
-			System.out.println("Matrice A-1");
-			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
-				if (j%3 == 0) {
-					System.out.println(" ");
-				}
-				System.out.print(this.getValeurs().get(j) + " ");
-			}
-			System.out.println("\nVecteur Xk");
-			System.out.println(xk_temp.toString());
-			System.out.printf("norme vecteur %.4f\n",xk_temp.calculNorme());
-			System.out.println("\nVecteur Yk"+i);
-			System.out.println(yk_1.toString());
-			System.out.printf("norme vecteur %.4f\n",yk_1.calculNorme());
-			System.out.println("LAMBDA : " + 1/yk_1.calculNorme() );
+//			System.out.println("\nboucle " + i);
+//			System.out.println("Matrice A-1");
+//			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
+//				if (j%3 == 0) {
+//					System.out.println(" ");
+//				}
+//				System.out.print(this.getValeurs().get(j) + " ");
+//			}
+//			System.out.println("\nVecteur Xk");
+//			System.out.println(xk_temp.toString());
+//			System.out.printf("norme vecteur %.4f\n",xk_temp.calculNorme());
+//			System.out.println("\nVecteur Yk"+i);
+//			System.out.println(yk_1.toString());
+//			System.out.printf("norme vecteur %.4f\n",yk_1.calculNorme());
+//			System.out.println("LAMBDA : " + 1/yk_1.calculNorme() );
 		}
 		return 1/yk_1.calculNorme();
 
