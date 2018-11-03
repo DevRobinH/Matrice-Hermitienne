@@ -3,6 +3,7 @@ package Model;
 import Model.Vecteur;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 import Model.Complexe;
@@ -79,8 +80,8 @@ public class Matrice {
 		}
 		return false;
 	}
-	
-	
+
+
 
 	public Vecteur mutiplication(Vecteur x) {
 		Complexe[] valeurVec3 = {new Complexe(0,0),new Complexe(0,0),new Complexe(0,0)};
@@ -110,64 +111,90 @@ public class Matrice {
 			valeurVec3[2] = (this.getValeurs().get(6).multiplication(x.getX()[0]))
 					.addition(this.getValeurs().get(7).multiplication(x.getX()[1]))
 					.addition(this.getValeurs().get(8).multiplication(x.getX()[2]));;
-			//	System.out.println("valeur : "+valeur[2]);
-			return new Vecteur(valeurVec3);		
+					//	System.out.println("valeur : "+valeur[2]);
+					return new Vecteur(valeurVec3);		
 		}
 
 		return new Vecteur();
 	}
-	
+
 	/**
 	 * Détermination de la plus grande valeur propre 
 	 * via la méthode de la puissance
-	 * @param x0 vecteur initiale pour commencer l'agorithme
+	 * @param vn vecteur initiale pour commencer l'agorithme
 	 * @return la plus grande valeur propre
 	 */
-	public double methodePuissance(Vecteur x0) {
+	public double methodePuissance(Vecteur vn) {
 		double precision = 0.005;  // precision
-		Vecteur yn = new Vecteur();  
+		// Vecteur Vn-1
+		Vecteur vn__1 = new Vecteur(); 
+		// vecteur tampon pour multiplication
 		Vecteur zn = new Vecteur();
-		// tant que la soustraction des normes est infieur à la précision
-		// on laisse tournée l'algo 
-		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
-            System.out.println(x0.calculNorme() - yn.calculNorme());
-			yn = x0;
-			zn = this.mutiplication(x0);
-		    x0 = zn.divise(zn.calculNorme());	
-		}*/
-		for(int i=0; i< 1000; i++) {
-			yn = x0;
-			zn = this.mutiplication(x0);
-		    x0 = zn.divise(zn.calculNorme());	
+	
+		for(int i=0; i< 14; i++) {
+			vn__1 = vn;
+			zn = this.mutiplication(vn);
+			vn = zn.divise(zn.calculNorme());
+			
+			// Affichage pour vérification
+			System.out.println("boucle " + i);
+			System.out.println("Matrice A");
+			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
+				if (j%3 == 0) {
+					System.out.println(" ");
+				}
+				System.out.print(this.getValeurs().get(j) + " ");
+			}
+			System.out.println("\nVecteur Vn");
+			System.out.println(vn__1.toString());
+			System.out.printf("norme vecteur %.4f\n",vn__1.calculNorme());
+			System.out.println("\nVecteur V"+i);
+			System.out.println(vn.toString());
+			System.out.printf("norme vecteur %.4f\n",vn.calculNorme());
+			System.out.println("LAMBDA : " + zn.calculNorme() );
 		}
 		return zn.calculNorme();
 	}
-	
+
 	/**
 	 * Détermination de la plus petite valeur propre 
 	 * via la méthode de la puissance Inverse
-	 * @param x0 vecteur initiale pour commencer l'agorithme
+	 * @param xk vecteur initiale pour commencer l'agorithme
 	 * @return la plus petite valeur propre
 	 */
-	public double methodePuissanceInverse(Vecteur x0) {
+	public double methodePuissanceInverse(Vecteur xk) {
 		double precision = 0.005;  // precision
-		Vecteur yn = new Vecteur();  
-		Vecteur zn = new Vecteur();
-		// tant que la soustraction des normes est infieur à la précision
-		// on laisse tournée l'algo 
-		/*while((x0.calculNorme() - yn.calculNorme()) < precision) {
-            System.out.println(x0.calculNorme() - yn.calculNorme());
-			yn = x0;
-			zn = this.mutiplication(x0);
-		    x0 = zn.divise(zn.calculNorme());	
-		}*/
-		for(int i = 0; i < 100000; i++) {
-			yn = x0;
-			zn = this.mutiplication(x0);
-		    x0 = zn.divise(zn.calculNorme());	
+		Vecteur yk_1 = new Vecteur();
+		Vecteur xk_temp = new Vecteur();
+
+		// on boucle pour calcul
+		for(int i=0; i< 14; i++) {
+			xk_temp = xk;
+            // multiplication entre la matrice inverse et le vecteur xk
+			// Ce qui donne yk+1
+			yk_1 = this.mutiplication(xk);
+			// division de yk+1 par sa norme --> nouveau vecteur xk
+			xk = yk_1.divise(yk_1.calculNorme());
+
+			// Affichage pour verification 
+			System.out.println("\nboucle " + i);
+			System.out.println("Matrice A-1");
+			for(int j = 0 ; j < this.getValeurs().size(); j++ ) {
+				if (j%3 == 0) {
+					System.out.println(" ");
+				}
+				System.out.print(this.getValeurs().get(j) + " ");
+			}
+			System.out.println("\nVecteur Xk");
+			System.out.println(xk_temp.toString());
+			System.out.printf("norme vecteur %.4f\n",xk_temp.calculNorme());
+			System.out.println("\nVecteur Yk"+i);
+			System.out.println(yk_1.toString());
+			System.out.printf("norme vecteur %.4f\n",yk_1.calculNorme());
+			System.out.println("LAMBDA : " + 1/yk_1.calculNorme() );
 		}
-		return 1/zn.calculNorme();
-		
+		return 1/yk_1.calculNorme();
+
 	}
 
 	/***************** GET ************************/

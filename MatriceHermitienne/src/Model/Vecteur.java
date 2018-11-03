@@ -54,7 +54,7 @@ public class Vecteur {
 	 */
 	public double calculNorme() {
 		// norme du vecteur à retourner
-		double norme = 0;
+		double norme = 0.0;
 		//System.out.println(this.getX().length);
 		// Cas vecteur taille 2
 		//System.out.println(this.getX().length);
